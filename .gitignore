@@ -1,0 +1,56 @@
+# ==============================================================================
+# BillingRadar - Root Git Ignore File
+# ==============================================================================
+
+# --- .NET (C#) Build & Cache ---
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bld/
+[Bb]uild/
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- Node / Frontend Build & Cache ---
+node_modules/
+dist/
+dist-ssr/
+*.local
+.eslintcache
+.stylelintcache
+.npm/
+.yarn-error.log
+package-lock.json.log
+.docusaurus/
+.vite-inspect/
+
+# --- Environment & Secret Files ---
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.pfx
+
+# --- IDEs & Editors ---
+.vscode/
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# --- Docker & Compose ---
+.docker/
+docker-compose.override.yml
+*.db-journal

@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BillingRadar.Application/BillingRadar.Application.csproj" />
+  <Project Path="BillingRadar.Domain/BillingRadar.Domain.csproj" />
+  <Project Path="BillingRadar.Infrastructure/BillingRadar.Infrastructure.csproj" />
+  <Project Path="BillingRadar.WebAPI/BillingRadar.WebAPI.csproj" />
+</Solution>

@@ -1,0 +1,29 @@
+# ==============================================================================
+# BillingRadar - Root Docker Ignore File
+# ==============================================================================
+
+# Git & IDEs
+.git/
+.gitignore
+.dockerignore
+.vscode/
+.idea/
+*.md
+
+# .NET Files
+**/bin/
+**/obj/
+**/*.user
+**/*.sln.docstates
+**/*.slnx
+
+# Node & Frontend
+**/node_modules/
+**/dist/
+**/dist-ssr/
+.npm/
+
+# Logs & Temp Files
+*.log
+tmp/
+temp/

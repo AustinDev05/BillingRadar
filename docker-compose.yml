@@ -1,0 +1,54 @@
+services:
+  # Database Service (PostgreSQL 17)
+  db:
+    image: postgres:17-alpine
+    container_name: billingradar-db
+    restart: unless-stopped
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME:-billingradar_db}
+      POSTGRES_USER: ${DB_USER:-billingradar_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-SecurePassword123!}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Backend WebAPI (.NET 10)
+  backend:
+    build:
+      context: .
+      dockerfile: BillingRadar.WebAPI/Dockerfile
+    container_name: billingradar-backend
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT:-5140}:5140"
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=${DB_NAME:-billingradar_db};Username=${DB_USER:-billingradar_user};Password=${DB_PASSWORD:-SecurePassword123!};Include Error Detail=true
+      JWT__Key: ${JWT__Key}
+      JWT__Issuer: ${JWT__Issuer}
+      JWT__Audience: ${JWT__Audience}
+      JWT__DurationInMinutes: ${JWT__DurationInMinutes:-1440}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Frontend (Vue.js + Vite + Tailwind CSS v4)
+  frontend:
+    build:
+      context: ./billingradar-front
+      dockerfile: Dockerfile
+    container_name: billingradar-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
