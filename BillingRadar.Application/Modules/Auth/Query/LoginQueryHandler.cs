@@ -1,20 +1,19 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using BillingRadar.Application.Interfaces;
+using BillingRadar.Application.Shared;
 using BillingRadar.Domain.Repositories;
 using MediatR;
-using BillingRadar.Application.Shared;
 
 namespace BillingRadar.Application.Modules.Auth.Query
 {
     public class LoginQueryHandler : IRequestHandler<LoginQuery, Result<LoginQueryResponse>>
     {
-        private readonly JwtSettings _jwtSettings;
+        private readonly IJwtProvider _jwtProvider;
+        private readonly IUserRepository _userRepository;
 
-        public LoginQueryHandler(IUserRepository userRepository, IOptions<JwtSettings> jwtSettings)
+        public LoginQueryHandler(IUserRepository userRepository, IJwtProvider jwtProvider)
         {
             _userRepository = userRepository;
-            _jwtSettings = jwtSettings.Value;
+            _jwtProvider = jwtProvider;
         }
 
         public async Task<Result<LoginQueryResponse>> Handle(LoginQuery request, CancellationToken cancellationToken)
@@ -26,7 +25,7 @@ namespace BillingRadar.Application.Modules.Auth.Query
             }
 
             var token = _jwtProvider.Generate(user);
-            return Result<LoginQueryResponse>.Success(new LoginQueryResponse { Token = token });
+            return Result<LoginQueryResponse>.Success(new LoginQueryResponse(token, user.Id.ToString()));
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BillingRadar.Infrastructure.Modules.Auth
+﻿namespace BillingRadar.Infrastructure.Modules.Auth
 {
     public class JwtSettings
     {

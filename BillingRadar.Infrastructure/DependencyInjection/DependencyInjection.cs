@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BillingRadar.Infrastructure.Modules.Auth;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
-using BillingRadar.Infrastructure.Modules.Auth;
 
 namespace BillingRadar.Infrastructure.DependencyInjection
 {
