@@ -5,6 +5,7 @@
         public string Key { get; init; } = string.Empty;
         public string Issuer { get; init; } = string.Empty;
         public string Audience { get; init; } = string.Empty;
-        public int DurationInMinutes { get; init; }
+        public int DurationInMinutes { get; init; } = 30;
+        public int RefreshTokenDurationInDays { get; init;} = 7;
     }
 }

@@ -2,7 +2,7 @@
 {
     public class User
     {
-        public Guid Id { get; private set; }
+        public int Id { get; private set; }
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public string Email { get; private set; }
@@ -10,7 +10,7 @@
         public bool Status { get; private set; }
 
         // Constructor para EF Core y creación
-        public User(Guid id, string name, string surname, string email, string passwordHash)
+        public User(int id, string name, string surname, string email, string passwordHash)
         {
             Id = id;
             Name = name;

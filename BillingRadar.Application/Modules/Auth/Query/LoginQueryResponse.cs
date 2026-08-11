@@ -1,4 +1,4 @@
 ﻿namespace BillingRadar.Application.Modules.Auth.Query
 {
-    public class LoginQueryResponse(string AccessToken, string RefreshToken);
+    public record LoginQueryResponse(string AccessToken, string RefreshToken);
 }

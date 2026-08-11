@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="DTOs\" />
     <Folder Include="Modules\User\Command\" />
-    <Folder Include="Modules\User\Query\" />
   </ItemGroup>
 
   <PropertyGroup>
