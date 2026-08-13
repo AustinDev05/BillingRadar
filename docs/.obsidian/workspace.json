@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TODO.md",
+                "file": "notes/cqrs_conventions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TODO"
+              "title": "cqrs_conventions"
             }
           }
         ]
@@ -189,5 +189,7 @@
     }
   },
   "active": "8e70030293044097",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "TODO.md"
+  ]
 }
