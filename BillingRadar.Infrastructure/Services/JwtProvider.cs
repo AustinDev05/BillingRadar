@@ -1,4 +1,4 @@
-﻿using BillingRadar.Application.Interfaces;
+using BillingRadar.Application.Interfaces;
 using BillingRadar.Domain.Entities;
 using BillingRadar.Infrastructure.Modules.Auth;
 using Microsoft.Extensions.Options;
@@ -7,7 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace BillingRadar.Infrastructure.Repositories
+namespace BillingRadar.Infrastructure.Services
 {
     public class JwtProvider : IJwtProvider
     {

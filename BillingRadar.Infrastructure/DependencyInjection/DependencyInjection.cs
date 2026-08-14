@@ -1,4 +1,4 @@
-﻿using BillingRadar.Infrastructure.Modules.Auth;
+using BillingRadar.Infrastructure.Modules.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +19,7 @@ namespace BillingRadar.Infrastructure.DependencyInjection
 
             services.Configure<JwtSettings>(configuration.GetSection("Jwt"));
             services.AddScoped<BillingRadar.Domain.Repositories.IUserRepository, BillingRadar.Infrastructure.Repositories.UserRepository>();
-            services.AddScoped<BillingRadar.Application.Interfaces.IJwtProvider, BillingRadar.Infrastructure.Repositories.JwtProvider>();
+            services.AddScoped<BillingRadar.Application.Interfaces.IJwtProvider, BillingRadar.Infrastructure.Services.JwtProvider>();
 
             return services;
         }

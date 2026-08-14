@@ -1,4 +1,4 @@
-﻿namespace BillingRadar.Domain.Entities
+namespace BillingRadar.Domain.Entities
 {
     public class User
     {
@@ -9,7 +9,7 @@
         public string PasswordHash { get; private set; }
         public bool Status { get; private set; }
 
-        // Constructor para EF Core y creación
+        // Constructor para EF Core y carga desde base de datos
         public User(int id, string name, string surname, string email, string passwordHash)
         {
             Id = id;
@@ -18,6 +18,12 @@
             Email = email;
             PasswordHash = passwordHash;
             Status = true; // Por defecto activo
+        }
+
+        // Constructor para creación de nuevas entidades de dominio
+        public User(string name, string surname, string email, string passwordHash)
+            : this(0, name, surname, email, passwordHash)
+        {
         }
 
         public bool VerificarPassword(string password)
